@@ -2,14 +2,17 @@ from django.shortcuts import render
 from django.http import HttpResponse,request
 from .model import registration
 import smtplib
-l=[]
-login={}
-list_of_registration=registration.objects.all()
-for i in list_of_registration:
-    l.append(i.username)
-for i in list_of_registration:
-    login[i.username]=i.password
 def lgn_rgstr(request):
+    l = []
+    login = {}
+    list_of_registration = registration.objects.all()
+    email_list = []
+    for i in list_of_registration:
+        email_list.append(i.email)
+    for i in list_of_registration:
+        l.append(i.username)
+    for i in list_of_registration:
+        login[i.username] = [i.password, i.type_user]
     if request.method=='POST':
         name=request.POST.get('name','default')
         mobile=request.POST.get('mobile','default')
@@ -21,12 +24,14 @@ def lgn_rgstr(request):
         genderf=request.POST.get('genderf','default')
         genderp=request.POST.get('genderp','default')
         type=request.POST.get('type','default')
-
         username_lgn=request.POST.get('text','default')
         password_lgn=request.POST.get('password_lgn','default')
+        typel=request.POST.get('typel','default')
         if name!='default':
             if username in l:
                 return render(request,'lgn_rgstr.html',{'message':"The Username already Exist Enter Any other one"})
+            elif email in email_list:
+                return render(request,'lgn_rgstr.html',{'message':'Email Already Registered'})
             elif password!=passwordc:
                 return render(request,'lgn_rgstr.html',{'message':'The Password Doesnot matched May be some some typing error'})
             else:
@@ -40,15 +45,18 @@ def lgn_rgstr(request):
                 server.ehlo()
                 server.starttls()
                 Subject="Thanks For Registering"
-                server.login("<email>", "<password>")
+                server.login("weatherappabhinavcreations@gmail.com", "weatherapp@abhinavcreations")
                 Message=f"Thanks {name} for registering into TechBlogs.We will notify you regarding any updates \n\n\n\n Regards \n Team TechBlogs"
                 msg='Subject:{}\n\n{}'.format(Subject,Message)
                 server.sendmail("weatherappabhinavcreations@gmail.com",email,msg)
                 server.close()
         if username_lgn!='default':
             if username_lgn in l:
-                if password_lgn==login[username_lgn]:
-                    return HttpResponse("Homepage")
+                if password_lgn==login[username_lgn][0]:
+                    if typel==login[username_lgn][1]:
+                        return HttpResponse("Home Page")
+                    else:
+                        return render(request,'lgn_rgstr.html',{'message':"Everything is Correct but the user type is incorrect."})
                 else:
                     return render(request,'lgn_rgstr.html',{'message':'Wrong Password Try Again'})
             else:
