@@ -19,5 +19,5 @@ from . import view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', view.lgn_rgstr,name='Login'),
+    path('excell/',view.excell,name='Excell'),
 ]
-
