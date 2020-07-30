@@ -1,0 +1,445 @@
+{% load static %}
+{% csrf_token %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="header.js"></script>
+	<style type="text/css">
+		body {
+	margin: 0;
+	background-color:#B0B0B0;
+	width:100%;
+	
+	
+}
+.header{
+			height:70px;
+			width:100%;
+			position:fixed;
+			z-index:30;
+		background-color: transparent;
+
+			display: flex;
+			flex-direction: row;
+			justify-content:center;
+		}
+
+nav ul {
+	list-style-type: none;
+	padding:0px;
+}
+
+nav ul li {
+	font-size: 18px;
+	
+	background-color: white;
+	border: 2px solid black;
+	letter-spacing: 0.1em;
+	width: 6em;
+	height: 1.5em;
+	line-height: 1.4em;
+	position: relative;
+	overflow: hidden;
+
+	cursor: pointer;
+	display: inline-block;
+}
+
+nav ul li span {
+	color: white;
+	mix-blend-mode: difference;
+}
+
+nav ul li::before {
+	content: '';
+	position: absolute;
+	width: 1.5em;
+	height: inherit;
+	background-color: black;
+	border-radius: 50%;
+	top: 0;
+	left: -0.75em;
+	transition: 0.5s ease-out;
+}
+
+nav ul li:hover::before {
+	transform: scale(8);
+}
+
+@media screen and (max-width:700px){
+	nav ul li {
+	font-size: 14px;
+	
+	background-color: white;
+	border: 2px solid black;
+	letter-spacing: 0.1em;
+	width: 5em;
+	height: 1.3em;
+	line-height: 1.2em;
+	position: relative;
+	overflow: hidden;
+
+	cursor: pointer;
+	display: inline-block;
+}
+}
+
+.logout{
+	float:right;
+}
+/* Slideshow container */
+.slideshow-container {
+  width:100%;
+  height:500px;
+  z-index: 9;
+  margin:0px;
+
+}
+.mySlides {
+   width:100%;
+  height:500px;
+   z-index: 9;
+  margin:0px;
+  margin-left:0px;
+}
+
+
+
+
+
+.blogtype{	
+			padding-top: 50px;
+			width:70%;
+			margin-left:15%;
+			height:250px;
+			z-index:15;
+			margin-top:-150px;
+			position: absolute;
+			background-color:#E8E8E8;
+			align-content: center;
+
+			justify-content:center;
+		}
+		.button {
+			  border:2px solid blue;
+			 height:50px;
+			  border-radius:20px;
+			  padding: 15px 32px;
+			  text-align: center;
+			  text-decoration: none;
+			  display:inline-block;
+			  font-size: 16px;
+			  margin-right:-5px;
+			margin-bottom:5px;
+			  cursor: pointer;
+			  margin-left:20px;
+			  background:lightblue;
+			  margin-top:15px;
+		}
+		.button:hover{
+			 background:lightgreen;
+		}
+
+			.copyright{
+			height:50px;
+			width:100%;
+			background-color:black;
+			color: grey;
+			text-align: center;
+			font-size:18px;
+		
+			padding-top:2px;
+		}
+
+		
+
+ @import url('https://fonts.googleapis.com/css?family=Heebo:400,700|Open+Sans:400,700');
+    
+a {
+  color: inherit;
+}
+.cards-wrapper{
+	background-color:#B0B0B0;
+	font-family: 'Open Sans';
+  display: block;
+justify-content: center;
+height:2500px;
+margin-top:200px;
+width:100%;
+}
+.latest{
+	height:250px;
+	width:100%;
+	
+	justify-content: center;
+	text-align: center;
+	font-size:25px;
+	font-weight: bold;
+	padding-top:100px;
+}
+
+.card-body{
+  max-width:650px;
+  width:85%;
+  height:300px;
+  margin:20px auto 20px auto;
+ border: 10px solid #ccc;
+ 
+  color: white;
+  font-size: 18px;
+
+ 
+   box-shadow: 0 0 5em -1em black;
+  transition: all, var(--transition-time);
+  --bg-filter-opacity: 0.5;
+  background:black;
+   
+}
+.card{
+   text-decoration: none;
+}
+.card .tag {
+  color: white;
+  font-size:16px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 0.3rem;
+  padding: 0 0.5em;
+  margin-left: 0.5em;
+  margin-top:0.5 em;
+  display:inline-block;
+  line-height: 1.5em;
+  height:30px;
+  transition: all, var(--transition-time);
+}
+.card .date {
+   float:right;
+  font-size: 0.75em;
+  padding: 1em;
+  line-height: 1em;
+  opacity: .8;
+}
+.bloghead{
+  width:90%;
+  height:50px;
+  margin-left:5%;
+}
+.blogdetail{
+  width:90%;
+  height:150px;
+  margin-left:5%;
+}
+.author{
+    width:50%;
+  height:20px;
+  margin-left:3%;
+  margin-top:5px;
+}
+.card-body:hover{
+  color:black;
+  background-color:white;
+
+}
+@media screen and (max-width:800px)
+	{
+		.blogtype{
+				width:90%;
+				height:300px;
+				margin-left:5%;
+				
+			}
+			.button {
+				height:40px;
+			 	padding:10px 20px;
+			 	margin-top:5%;
+			 	margin-left:15px;
+		}
+		.cards-wrapper{
+		margin-top:300px;
+	}
+	}	
+@media screen and (max-width:700px)
+{
+	.card-body{
+		height:350px;
+	}
+  .bloghead{
+  width:90%;
+  height:80px;
+  margin-left:5%;
+  
+}
+.blogdetail{
+  width:90%;
+  height:150px;
+  margin-left:5%;
+}
+.author{
+    width:50%;
+  height:20px;
+  margin-left:3%;
+  margin-top:0px;
+}
+
+}
+
+	</style>
+</head>
+<body>
+<nav class="header" id="idheader">
+	  <ul>
+		    <li><span>Home</span></li>
+		    <li><span>All Blogs</span></li>
+		    <li><span>Developers</span></li>
+          <li><a href="/logout"><span>Logout</span></a></li>
+	  </ul>
+</nav>
+
+<div class="slideshow-container">
+
+		<div class="mySlides">
+		 
+		  <img src="{% static 'techbloglogo.jpeg' %}" width="100%" height="550px">
+
+		</div>
+
+		
+</div>
+
+
+<div class="blogtype">
+				<button class="button button1">
+					Python
+				</button>
+				<button class="button button1">
+					Django
+				</button>
+				<button class="button button1">
+					Data Science
+				</button>
+				
+				<button class="button button1">
+					Machine Learning
+				</button>
+
+				
+				<button class="button button1">
+					React
+				</button>
+				<button class="button button1">
+					Javascript
+				</button>
+				
+
+</div>
+
+	<div class="cards-wrapper">
+		<div class="latest">
+			<h1>Recent blogs</h1>
+			
+			<hr width="300px" color="black" >
+		</div>
+   <div class="card-body">
+    
+    <a class="card" href="#" style="background:black">
+      <div>
+
+          <div class="tag">HTML</div>
+         <div class="date">14 Oct 2017</div>
+     
+       <div class="bloghead"> <h2>Links, images and about file paths</h2></div>
+    
+        <div class="blogdetail"><p>Learn how to use links and images along with file paths…</p></div>
+       
+        <div class="author"><a href="#">@abhinav</a></div>
+        
+      </div>
+    </a>
+  </div>
+   <div class="card-body">
+    
+    <a class="card" href="#" style="background:black">
+      <div>
+
+          <div class="tag">HTML</div>
+         <div class="date">14 Oct 2017</div>
+     
+       <div class="bloghead"> <h2>Links, images and about file paths</h2></div>
+    
+        <div class="blogdetail"><p>Learn how to use links and images along with file paths…</p></div>
+       
+        <div class="author"><a href="#">@abhinav</a></div>
+        
+      </div>
+    </a>
+  </div>
+   <div class="card-body">
+    
+    <a class="card" href="#" style="background:black">
+      <div>
+
+          <div class="tag">HTML</div>
+         <div class="date">14 Oct 2017</div>
+     
+       <div class="bloghead"> <h2>Links, images and about file paths</h2></div>
+    
+        <div class="blogdetail"><p>Learn how to use links and images along with file paths…</p></div>
+       
+        <div class="author"><a href="#">@abhinav</a></div>
+        
+      </div>
+    </a>
+  </div>
+   <div class="card-body">
+    
+    <a class="card" href="#" style="background:black">
+      <div>
+
+          <div class="tag">HTML</div>
+         <div class="date">14 Oct 2017</div>
+     
+       <div class="bloghead"> <h2>Links, images and about file paths</h2></div>
+    
+        <div class="blogdetail"><p>Learn how to use links and images along with file paths…</p></div>
+       
+        <div class="author"><a href="#">@abhinav</a></div>
+        
+      </div>
+    </a>
+  </div>
+   <div class="card-body">
+    
+    <a class="card" href="#" style="background:black">
+      <div>
+
+          <div class="tag">HTML</div>
+         <div class="date">14 Oct 2017</div>
+     
+       <div class="bloghead"> <h2>Links, images and about file paths</h2></div>
+    
+        <div class="blogdetail"><p>Learn how to use links and images along with file paths…</p></div>
+       
+        <div class="author"><a href="#">@abhinav</a></div>
+        
+      </div>
+    </a>
+  </div>
+</div>
+ <div class="copyright">
+    	<p>&copy; Copyright  |  TechBlogs  |  2020</p>
+    </div>	
+<script>
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 ||document.documentElement.scrollTop > 20) {
+    document.getElementById("idheader").style.background = "white";
+  } else {
+    document.getElementById("idheader").style.background = "transparent";
+  }
+}
+ 
+</script>
+</body>
+</html>
