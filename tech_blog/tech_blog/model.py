@@ -19,7 +19,18 @@ class blog(models.Model):
     main=models.CharField(max_length=1000,default="")
     code=models.CharField(max_length=300,default="")
     output=models.CharField(max_length=300,default="")
-    date=models.CharField(max_length=10,default=str(datetime.datetime.now()).split(" ")[0])
-
+    date=models.CharField(max_length=10,default="/".join(str(datetime.datetime.now()).split(" ")[0].split("-")[::-1]))
+    writer_name=models.CharField(max_length=30,default="")
     def __str__(self):
         return self.title
+class writer(models.Model):
+    name1=models.CharField(max_length=20,default="")
+    email1=models.CharField(max_length=30,default="")
+    mobile1=models.CharField(max_length=20,default="")
+    username1=models.CharField(max_length=30,default="")
+    password1=models.CharField(max_length=40,default="")
+    gender1=models.CharField(max_length=10,default="")
+    type_user1=models.CharField(max_length=10,default="")
+
+    def __str__(self):
+        return self.username1
