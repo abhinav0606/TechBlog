@@ -22,6 +22,12 @@ urlpatterns = [
     path('', view.lgn_rgstr,name='Login'),
     path('excell/',view.excell,name='Excell'),
     path('TechBlog/',view.home,name="Home"),
-    path('blog/',view.blogs,name="Blog"),
     path('logout/',view.log,name='Logout'),
+    path('about/',view.about,name="Developers"),
+    path('adm/',view.admin,name="admin"),
+    path('accepts/<str:username>',view.accepts,name="accepts"),
+    path('rejects/<str:username>',view.rejects,name="rejects"),
+    path('blog/',view.blogg,name="blog"),
+    path('write/',view.writ_the_blog,name="write"),
+    path('blog/<str:title>',view.full_blog,name="Full_Blog")
 ]
