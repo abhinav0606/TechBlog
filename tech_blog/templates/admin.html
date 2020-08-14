@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Only For Admin</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body style="text-align:center">
+<h1>Only For Admin</h1>
+{% if Fundamental %}
+<form method="post" action="/adm/">{% csrf_token %}
+    <input type="text" id="username" name="username" placeholder="Enter the Username"><br>
+    <input type="password" id="password" name="password" placeholder="Enter the Password">
+    <button type="submit">Click Here</button>
+</form>
+{% else %}
+{% for i in write %}
+ <div class="card text-center" style="background:#836884;border-style:dashed">
+  <div class="card-header">
+      <h1 style="border-style:solid" class="neon">Username:{{i.username1}}</h1>
+  </div>
+  <div class="card-body">
+      <h5 class="card-title" style="font-size:25px;"><b>Name:{{i.name1}}</b></h5>
+      <p class="card-text"><b>Email:{{i.email1}}</b></p>
+
+  </div>
+  <div class="card-footer text-muted" style="color:black">
+      <b>Mobile:{{i.mobile1}}<br>
+          Gender:{{i.gender1}}</b><br>
+      <a href="/accepts/{{i.username1}}" class="btn btn-primary">Accepts</a>&nbsp;<a href="/rejects/{{i.username1}}" class="btn btn-primary">Rejects</a>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+</body>
+</html>

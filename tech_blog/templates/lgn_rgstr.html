@@ -300,8 +300,11 @@ img {
 	</form>
 	</div>
 	<div class="form-container sign-in-container">
-
-		<form action="" method="post">{% csrf_token %}
+{% if next %}
+		<form action="/?next={{next}}" method="post">{% csrf_token %}
+			{% else %}
+		<form action="/" method="post">
+			{% endif %}{% csrf_token %}
 			<h4>{{message}}</h4>
 			<h1 style="font-size:25px">Sign In</h1>
 
@@ -309,12 +312,12 @@ img {
 		<input type="password" name="password_lgn" id="password_lgn" placeholder="Password" required>
 			<div>
 <label for="type" class="input-line full-width">Type:</label>
-  <select id="type" name="type" >
+  <select id="typel" name="typel" >
        <option value="Writer">Writer</option>
     <option value="Reader">Reader</option>
   </select>
 			</div>
-		<button type="submit">Sign In</button>
+		<button type="submit" id="button">Sign In</button>
 		</form>
 	</div>
 	<div class= "overlay-container">

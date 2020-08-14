@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Write At TechBlog</title>
+</head>
+<body style="text-align:center">
+<h1>Write The Blog</h1>
+<form action="/write/" method="post">{% csrf_token %}
+<textarea id="title" name="title" rows="20" cols="50" placeholder="Enter the title of the blog"></textarea><br>
+    <textarea id="language" name="language" placeholder="Enter the language" rows="20" cols="50"></textarea><br>
+    <textarea id="desc" name="desc" placeholder="Description of the topic" rows="20" cols="50"></textarea><br>
+    <textarea id="main" name="main" placeholder="Main content of the code" rows="20" cols="50"></textarea><br>
+    <textarea id="code" name="code" placeholder="Enter the code if any" rows="20" cols="50"></textarea><br>
+    <textarea id="output" name="output" placeholder="Enter the ouput" rows="20" cols="50"></textarea><br>
+    <textarea id="w" name="w" placeholder="Writer name" rows="20" cols="10"></textarea><br>
+    <button type="submit">Send</button>
+</form>
+</body>
+</html>
